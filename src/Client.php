@@ -69,6 +69,7 @@ class Client
         try {
             $this->response = $this->httpClient->sendRequest($this->request);
         } catch (\Http\Client\Exception\TransferException $e) {
+            print_r($query);
             throw new \RuntimeException($e->getMessage());
         }
 
