@@ -9,6 +9,14 @@
             "email": "fvaughn@hearst.com"
         }
     ],
+    "keywords": [
+        "graphql",
+        "client",
+        "php-http",
+        "httplug",
+        "psr-18",
+        "psr-7"
+    ],
     "require": {
         "guzzlehttp/guzzle": "^6.3",
         "psr/log": "^1.0",
