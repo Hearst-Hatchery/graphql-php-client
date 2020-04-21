@@ -15,8 +15,6 @@ composer require hearst-hatchery/graphql-php-client
 ## Usage
 
 ```php
-<?php
-
 require 'vendor/autoload.php';
 use GraphQLClient\Client;
 
@@ -76,6 +74,59 @@ array(1) {
   }
 }
 ```
+
+### Advanced Example
+
+You can easily extend the client, and it supports Httplug's Plugins. This one uses Github's API and variables.
+
+This example needs `composer require php-http/message` before running.
+Adapted from https://developer.github.com/v4/guides/forming-calls/#working-with-variables
+
+```php
+require 'vendor/autoload.php';
+use GraphQLClient\Client;
+use Http\Message\Authentication\Bearer;
+use Http\Client\Common\Plugin\AuthenticationPlugin;
+use Http\Client\Common\PluginClient;
+
+class GithubClient extends Client
+{
+    public function __construct(){
+        parent::__construct("https://api.github.com/graphql");
+    }
+
+    protected function buildClient(array $options = [])
+    {
+        $authentication = new Bearer('<Github API Token>');
+        $authenticationPlugin = new AuthenticationPlugin($authentication);
+
+        return new PluginClient(
+            parent::buildClient($options),
+            [$authenticationPlugin]
+        );
+    }
+}
+
+$client = new GithubClient();
+
+$query = <<<QUERY
+query(\$number_of_repos:Int!) {
+  viewer {
+    name
+     repositories(last: \$number_of_repos) {
+       nodes {
+         name
+       }
+     }
+   }
+}
+QUERY;
+
+$response = $client->query($query, ['number_of_repos' => 3]);
+
+var_dump($response);
+```
+
 
 ### Client options
 
