@@ -77,9 +77,6 @@ array(1) {
 }
 ```
 
-### Advanced Example
-
-
 ### Client options
 
 Currently, this client accepts all [Guzzle request options](http://docs.guzzlephp.org/en/stable/request-options.html).
