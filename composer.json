@@ -9,20 +9,30 @@
             "email": "fvaughn@hearst.com"
         }
     ],
+    "keywords": [
+        "graphql",
+        "client",
+        "php-http",
+        "httplug",
+        "psr-18",
+        "psr-7"
+    ],
     "require": {
         "guzzlehttp/guzzle": "^6.3",
         "psr/log": "^1.0",
         "symfony/options-resolver": "^4.2",
         "php-http/client-common": "^1.8",
         "php-http/guzzle6-adapter": "^1.1",
-        "php-http/discovery": "^1.4"
+        "php-http/discovery": "^1.4",
+        "ext-json": "*",
+        "php": "^7.1"
     },
     "require-dev": {
         "codeception/verify": "^1.0",
-        "codeception/base": "^2.5",
-        "friendsofphp/php-cs-fixer": "^2.13",
+        "friendsofphp/php-cs-fixer": "^2.16",
         "php-http/mock-client": "^1.1",
-        "guzzlehttp/psr7": "^1.4"
+        "guzzlehttp/psr7": "^1.4",
+        "codeception/codeception": "^4.1"
     },
     "autoload": {
         "psr-4": {
@@ -45,5 +55,8 @@
         "post-install-cmd": [
             "bash bin/setup.sh"
         ]
+    },
+    "suggest": {
+        "hearst-hatchery/graphql-php-query-builder": "Easy and convenient way to build GraphQL queries"
     }
 }
