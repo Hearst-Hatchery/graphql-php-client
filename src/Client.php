@@ -113,7 +113,7 @@ class Client
                         'Content-Type' => 'application/json',
                     ],
                 ])
-                ->setAllowedValues('method', ['POST', 'GET'])
+                ->setAllowedValues('method', ['POST', 'GET', 'DELETE'])
                 ->setAllowedTypes('headers', 'array');
             },
             'json' => true,
