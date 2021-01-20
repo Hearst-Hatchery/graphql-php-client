@@ -16,7 +16,9 @@ install:
   - phpenv config-rm xdebug.ini # remove xdebug for faster composer commands
   - composer install --classmap-authoritative --no-progress
 
-before_script: composer lint
+before_script:
+  - composer lint
+  - export XDEBUG_MODE=coverage
 
 script:
   - composer build
