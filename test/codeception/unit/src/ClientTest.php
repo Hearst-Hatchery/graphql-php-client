@@ -52,7 +52,7 @@ class ClientTest extends \Codeception\Test\Unit
 
     public function optionProvider()
     {
-        $defaults = $defaultGET = $defaultGraphQL = [
+        $defaults = $defaultGET = $defaultDELETE = $defaultGraphQL = [
             'request' => [
                 'method' => 'POST',
                 'headers' => [
@@ -63,6 +63,7 @@ class ClientTest extends \Codeception\Test\Unit
         ];
 
         $defaultGET['request']['method'] = 'GET';
+        $defaultDELETE['request']['method'] = 'DELETE';
 
         $defaultGraphQL['request']['headers']['Content-Type'] = 'application/graphql';
 
@@ -78,6 +79,10 @@ class ClientTest extends \Codeception\Test\Unit
             'Single option, GET method' => [
                 'options' => ['request' => ['method' => 'GET']],
                 'expected' => $defaultGET,
+            ],
+            'Single option, DELETE method' => [
+                'options' => ['request' => ['method' => 'DELETE']],
+                'expected' => $defaultDELETE,
             ],
             'Single option, new content-type' => [
                 'options' => ['request' => ['headers' => ['Content-Type' => 'application/graphql']]],
